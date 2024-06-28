@@ -1,0 +1,26 @@
+CC = clang
+CFLAGS = -g -Wall -Wno-everything -pthread -lm
+SRC_DIR = code
+OBJ_DIR = obj
+BIN_DIR = .
+
+SRCS = $(wildcard $(SRC_DIR)/*.c)
+OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
+TARGET = $(BIN_DIR)/main
+
+.PHONY: all clean
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS) | $(BIN_DIR)
+	$(CC) $(CFLAGS) $^ -o $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR) $(BIN_DIR):
+	mkdir -p $@
+
+clean:
+	$(RM) -r $(OBJ_DIR) $(BIN_DIR)/main
+
