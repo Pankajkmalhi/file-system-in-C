@@ -35,8 +35,6 @@ This project implements a simple file system in C. It provides functionalities f
 **Known Issues:**
 - No any known issues
 
-**Future Improvements:**
-- [Mention any planned enhancements or improvements for future iterations]
 
 **Contributions:**
 - Contributions to this project are welcome. Please follow the project guidelines and coding standards.
